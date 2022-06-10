@@ -11,10 +11,7 @@ public class Main {
 
         System.out.println(card.numList);
 
-//        変数bingoCardに作成したビンゴカードを格納
-//        int[][] bingoCard = makeBingoCard();
-
-        // bingoCardの表示
+//      bingoCardの表示
         for (int[] ints : card.cardNumber) {
             for (int anInt : ints) {
                 System.out.print(String.format("%02d", anInt) + " ");

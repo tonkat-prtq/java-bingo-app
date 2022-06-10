@@ -2,36 +2,51 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
+import java.util.stream.IntStream;
 
 public class BingoCard {
     int rows = 5;
     int columns = 5;
     int counter = 0;
+//    BingoNumber bingoNumber;
+
     int[][] cardNumber = new int[rows][columns];
     ArrayList<Integer> numList = new ArrayList<>();
 
-    // WIP:列ごとに決まった範囲の数値のリストを作成したい（うまくいっていない）
-    public ArrayList<Integer> makeNumList(int rowNumber){
-        for (int i = 1; i <= 15 * (rowNumber + 1); i++) {
+    public ArrayList<Integer> makeNumList(){
+        for (int i = 1; i <= 15; i++) {
             numList.add(i);
         }
+        // 1~15のArrayListはnumList[0]に、 16~30のArrayListはnumList[1]に……のように格納したい
+        Collections.shuffle(numList);
 
         return numList;
     }
 
-    // 5 * 5の列のとき、第1列(cardNumber[0~4][0])には1~15の数字が入る。
-    // cardNumber[rows][columns]とした時、15 * (rows + 1)とすれば
-    // その列に入る数字の上限が分かる。
-
     public BingoCard() {
+        // 1~15のリストを作成する
+        makeNumList();
+        // ビンゴカードの列・行の数でfor文を回し、カードに数字を格納する
         for (int i = 0; i < rows; i++) {
-            makeNumList(i);
-            for (int j = 0; j < columns; j++) {
-                cardNumber[i][j] = numList.get(counter);
-                counter++;
+            for (int numListIndex: numList) {
+                for (int j = 0; j < columns; j++) {
+                    // numListから取り出した数値に、i*15の数を足すことで、列ごとの数値の範囲を定めている
+                    cardNumber[j][i] = numList.get(counter) + (i * 15);
+                    // numListから番号を取り出すときに使っている変数を更新（ここ修正できそう）
+                    counter++;
+                }
+                // numListの要素数=15に対し、cardNumberに入れたい数=25
+                // そのままcounterを回しているとIndexOutOfBoundsExceptionが発生してしまう
+                // counterの数字がnumListの要素数を超えないように、ここでリセット
+                if (counter >= 15) {
+                    counter = 0;
+                    // counterのリセットのみだと、B列の数字に15*iを足した数がG列に、I列の数字に15*iを足した数がO列に格納されてしまう
+                    // そのような規則性を排除するため、ここでもShuffleをかける
+                    Collections.shuffle(numList);
+                }
             }
         }
-    }
 
+        cardNumber[(rows / 2)][(columns / 2)] = 0;
+    }
 }
