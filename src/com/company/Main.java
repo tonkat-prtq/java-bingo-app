@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         BingoCard card = new BingoCard();
-
+        BingoNumber bingoNumber = new BingoNumber(99);
         System.out.println(card.numList);
 
 //      bingoCardの表示
