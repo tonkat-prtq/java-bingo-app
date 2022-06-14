@@ -7,8 +7,10 @@ import java.util.stream.IntStream;
 public class BingoCard {
     int rows = 5;
     int columns = 5;
-    int counter = 0;
-//    BingoNumber bingoNumber;
+
+    // BingoCardはビンゴのマスの数だけBingoTroutを持つ
+    // bingoCard = new BingoTrout[5][5]
+    BingoTrout bingoTrout;
 
     int[][] cardNumber = new int[rows][columns];
     ArrayList<Integer> numList = new ArrayList<>();
@@ -28,6 +30,7 @@ public class BingoCard {
         makeNumList();
         // ビンゴカードの列・行の数でfor文を回し、カードに数字を格納する
         for (int i = 0; i < rows; i++) {
+            int counter = 0;
             for (int numListIndex: numList) {
                 for (int j = 0; j < columns; j++) {
                     // numListから取り出した数値に、i*15の数を足すことで、列ごとの数値の範囲を定めている

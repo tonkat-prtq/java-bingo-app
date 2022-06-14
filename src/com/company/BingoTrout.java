@@ -5,9 +5,9 @@ import org.w3c.dom.ranges.RangeException;
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
-public class BingoNumber {
+public class BingoTrout {
     private int number;
-    boolean isHit = false;
+    private boolean hitStatus = false;
 
     public int getNumber() {
         return this.number;
@@ -18,7 +18,17 @@ public class BingoNumber {
         return (1 <= number) && (number <= 75);
     }
 
-    public BingoNumber (int number) {
+    // 抽選された数字を引数に渡して、マスに入っている数字を比較
+    public boolean isHit(int lotteryNumber) {
+        if (lotteryNumber == this.number) {
+            return true;
+        } else
+            return false;
+
+    }
+
+
+    public BingoTrout (int number) {
         // コンストラクタ
 
         if (!isValid(number)) {
