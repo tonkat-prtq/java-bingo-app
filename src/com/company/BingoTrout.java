@@ -3,11 +3,13 @@ package com.company;
 import org.w3c.dom.ranges.RangeException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.stream.IntStream;
 
 public class BingoTrout {
-    private int number;
+    int number;
     private boolean hitStatus = false;
+    private ArrayList<Integer> numList = new ArrayList<>();
 
     public int getNumber() {
         return this.number;
@@ -28,14 +30,14 @@ public class BingoTrout {
     }
 
 
-    public BingoTrout (int number) {
+    public BingoTrout (int rows, int columns) {
         // コンストラクタ
 
-        if (!isValid(number)) {
-            throw new IllegalArgumentException("不正：範囲外");
+        for (int i = 1; i <= rows * columns; i++) {
+            numList.add(i);
         }
 
-        this.number = number;
+
 
     }
 }
