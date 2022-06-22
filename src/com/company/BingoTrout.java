@@ -10,6 +10,7 @@ public class BingoTrout {
     public int getNumber() {
         return this.number;
     }
+    public boolean getHitStatus() { return this.hitStatus; }
 
     // 5*5のビンゴカードの場合の、数字範囲チェック
     public boolean isValid(int number) {
@@ -17,8 +18,8 @@ public class BingoTrout {
     }
 
     // 抽選された数字を引数に渡して、マスに入っている数字を比較
-    public void isHit(int lotteryNumber) {
-        if (lotteryNumber == this.number || lotteryNumber == 0) {
+    public void hit(int lotteryNumber) {
+        if (lotteryNumber == this.number || this.number == 0) {
             this.hitStatus = true;
         }
     }

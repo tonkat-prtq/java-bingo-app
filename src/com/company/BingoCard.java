@@ -24,7 +24,7 @@ public class BingoCard {
 
 //        BingoTrout[0][0] ~ [0][4]は、allTrout[1]~[15]の中からランダムで選ばれる。
 
-        ArrayList<Integer> numList = new ArrayList<Integer>();
+        ArrayList<Integer> numList = new ArrayList<>();
 
         for(int i = 1; i < 16; i++) {
             numList.add(i);
@@ -41,6 +41,6 @@ public class BingoCard {
 
         // ビンゴカードの真ん中に穴を空ける
         troutPosition[2][2].number = 0;
-        troutPosition[2][2].isHit(troutPosition[2][2].number);
+        troutPosition[2][2].hit(troutPosition[2][2].number);
     }
 }

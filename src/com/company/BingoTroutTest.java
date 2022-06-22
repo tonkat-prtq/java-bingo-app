@@ -19,16 +19,21 @@ class BingoTroutTest {
     void isValid() {
         BingoTrout b2 = new BingoTrout();
         b2.number = 10;
-        assertEquals(true, b2.isValid(b2.number));
+        assertTrue(b2.isValid(b2.number));
     }
 
     @Test
-    void isHit() {
+    void hit() {
         BingoTrout b3 = new BingoTrout();
         BingoTrout b4 = new BingoTrout();
 
         b3.number = 0;
         b4.number = 15;
+
+        b3.hit(15);
+        b4.hit(15);
+
+        assertEquals(b3.getHitStatus(), b4.getHitStatus());
 
         // isHitメソッドが呼び出されて、返すhitStatusが期待するもの（この場合はtrue）ならば
         // テスト成功としたいが、assertEqualsの第一引数の書き方が分からず。
