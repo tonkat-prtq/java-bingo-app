@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class BingoTrout {
+public class BingoTrout implements Number {
     int number;
     private boolean hitStatus = false;
     private ArrayList<Integer> numList = new ArrayList<>();
@@ -24,4 +24,9 @@ public class BingoTrout {
         }
     }
 
+    // sizeにビンゴカードのrows * columnsの数字を入れたい
+    @Override
+    public int rangeDecider(int size) {
+        return size * size * 3;
+    }
 }
