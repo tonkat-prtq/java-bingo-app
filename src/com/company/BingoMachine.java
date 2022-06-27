@@ -21,6 +21,8 @@ public class BingoMachine {
         }
     }
 
+//    Collections.shuffle(numList);
+
     // ビンゴマシーンを回して、当たり数字を取り出す
     public void garaPon() {
         // シャッフルしたあとなので先頭から取り出していくだけでいいはず
