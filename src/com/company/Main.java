@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         BingoCard card = new BingoCard();
         card.setHitCombination();
+        card.ShowBingoHitCombination();
 
       // bingoCardの表示
 //        for (BingoTrout[] ints : card.troutPosition) {

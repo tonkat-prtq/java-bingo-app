@@ -4,43 +4,48 @@ import java.util.*;
 
 public class BingoCard {
 
-    List<Set<BingoTrout>> list = new ArrayList<>();
-    Set<BingoTrout> set = new HashSet<>();
+    // コレクションオブジェクトを作ってそっちで操作したい
+     List<Set<BingoTrout>> bingoHitCombinationList = new ArrayList<>();
+    Set<BingoTrout> bingoHitCombination = new HashSet<>();
+//    BingoHitCombinationLists bingoHitCombinationList = new BingoHitCombinationLists(null);
 
 
+    // ここの処理を切り出したい
     public void setHitCombination() {
         for(int i = 0; i < Numbers.BINGO_CARD_ROWS; i++) {
             // 縦の当たりの組み合わせ
-            Set<BingoTrout> set = new HashSet<>();
+            Set<BingoTrout> bingoHitCombination = new HashSet<>();
             for(int j = 0; j < Numbers.BINGO_CARD_COLUMNS; j++) {
-                set.add(new BingoTrout(i, j));
+                bingoHitCombination.add(new BingoTrout(i, j));
             }
-            list.add(set);
+            bingoHitCombinationList.add(bingoHitCombination);
 
             // 横の当たりの組み合わせ
-            set = new HashSet<>();
+            bingoHitCombination = new HashSet<>();
             for(int k = 0; k < Numbers.BINGO_CARD_ROWS; k++) {
-                set.add(new BingoTrout(k, i));
+                bingoHitCombination.add(new BingoTrout(k, i));
             }
-            list.add(set);
+            bingoHitCombinationList.add(bingoHitCombination);
         }
 
         // 斜めの当たりの組み合わせ
-        set = new HashSet<>();
+        bingoHitCombination = new HashSet<>();
         for(int l = 0; l < Numbers.BINGO_CARD_ROWS; l++) {
-            set.add(new BingoTrout(l, l));
+            bingoHitCombination.add(new BingoTrout(l, l));
         }
-        list.add(set);
+        bingoHitCombinationList.add(bingoHitCombination);
 
         // 斜めの当たりの組み合わせ
-        set = new HashSet<>();
+        bingoHitCombination = new HashSet<>();
         for (int o = 0, p = Numbers.BINGO_CARD_COLUMNS - 1; o < Numbers.BINGO_CARD_COLUMNS; o++) {
-            set.add(new BingoTrout(p - o, o));
+            bingoHitCombination.add(new BingoTrout(p - o, o));
         }
-        list.add(set);
+        bingoHitCombinationList.add(bingoHitCombination);
+    }
 
-        // テスト用出力
-        for (Set<BingoTrout> set : list) {
+    // 出力のための処理を切り出し
+    public void ShowBingoHitCombination () {
+        for (Set<BingoTrout> set : (List<Set<BingoTrout>>)bingoHitCombinationList) {
             System.out.println("スタート");
             for (BingoTrout num : set) {
                 System.out.println(num.getPosition_x() + ", " + num.getPosition_y() + "の数字は" + num.getNumber() + "です");

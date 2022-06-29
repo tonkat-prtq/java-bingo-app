@@ -12,6 +12,9 @@ public class BingoTrout {
 
     ArrayList<Integer> numList = new ArrayList<>();
 
+    public void ShowBingoTroutInformation(int position_x, int position_y, int number) {
+        System.out.println(position_x + ", " + position_y + "の数字は" + number + "です");
+    }
 
     public BingoTrout(int position_x, int position_y) {
         this.position_x = position_x;
